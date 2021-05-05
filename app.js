@@ -1,35 +1,20 @@
-const express   = require('express')
-const mysql       = require('mysql')
+const express = require('express')
+const mysqlConnection = require('./connection')
+const peopleRoute = require('./routes/people')
+const path = require('path')
 
 const app = express()
 const port = process.env.PORT || 5050
 
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use('/cohort/add', express.static(path.join(__dirname + '/views')))
 
-//Connect mysql
+app.use('/cohort', peopleRoute)
 
-const mysqlConnection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "sua"
+app.listen(port, () => {
+    console.log('Successfully connected to server and running on ', port)
 })
 
-//Still running
-mysqlConnection.connect((err) => {
-    if (!err) {
-        console.log('Live and Direct from the database')
-        const sql = "SELECT * FROM cohort"
-        mysqlConnection.query(sql, (err, result) => {
-            if (err) {
-                console.log(err)
-            } else {
-                console.log(result)
-            }
-        })
-    } else {
-        console.log(err)
-    }
-})
 

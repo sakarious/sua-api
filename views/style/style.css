@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: thistle;
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+form {
+    text-align: center;
+}
+
+#submit {
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    font-weight: bold;
+    font-size: large;
+}
